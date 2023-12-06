@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Pagix</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">UXQ0vrQEihMJiniTdsUkkN_yHiFiXxOLF7UTv</string>
+</resources>
