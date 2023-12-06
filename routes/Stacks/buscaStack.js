@@ -5,7 +5,7 @@ import { NavigationContainerRefContext, useIsFocused, useNavigationState, useRou
 import { Avatar } from '@rneui/themed';
 import Logo from '../../assets/images/pagix_logo.png'
 
-import Feed from '../../pages/feed'; 
+import Busca from '../../pages/busca'; 
 
 const Stack = createStackNavigator();
 
@@ -17,7 +17,7 @@ import { color } from '@rneui/base';
 
 
 
-const NavegarStack = ({ navigation }) => {
+const BuscaStack = ({ navigation }) => {
   const currentRouteName = navigationRef?.current?.getCurrentRoute().name;
   const route = useRoute()
   const fullScreens = ["Busca"]
@@ -31,23 +31,10 @@ const NavegarStack = ({ navigation }) => {
   <Stack.Navigator >
       <Stack.Screen 
         name="Feed" 
-        component={Feed} 
+        component={Busca} 
         options={{
-          headerShown: true, 
-          // headerTransparent: true,
-          headerStyle: defaultStyles.defaultHeaderStyles,
-          headerTintColor: '#fff',
-          headerTitle: () => null,
-          headerLeft: () => 
-            <Image
-              style={{
-                width: 100,
-                objectFit: 'contain',
-                marginLeft: 10,
-              }}
-              source={Logo}
-            />,  
-          headerRight: () => <Icon name="notifications" color={"#fff"} style={{marginRight: 15}}/>
+          headerShown: false, 
+          // headerTransparent: true
         }}
       />
      
@@ -56,4 +43,4 @@ const NavegarStack = ({ navigation }) => {
 }
 
 
-export default NavegarStack;
+export default BuscaStack;

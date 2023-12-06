@@ -18,7 +18,7 @@ export default function Post({ titulo }){
         return(
             <TouchableOpacity style={{display: 'flex', flexDirection: 'row', gap: 5, alignItems: 'center', paddingHorizontal: 5, paddingVertical: 8}}>
                 <Icon name={iconName} color={'#fff'} size={14}/>
-                <Text style={{fontSize: 11}}>{titulo}</Text>
+                <Text style={{fontSize: 11, color: '#fff'}}>{titulo}</Text>
             </TouchableOpacity>
         )
     }
@@ -33,11 +33,11 @@ export default function Post({ titulo }){
                         source={{ uri: 'https://randomuser.me/api/portraits/men/36.jpg' }}
                         key={'123'}
                     />
-                    <Text>Erickola</Text>
+                    <Text style={{color: '#fff'}}>Erickola</Text>
                 </TouchableOpacity>
                 <Text style={{fontSize: 10, color: '#666'}}>hà uma hora</Text>
             </View>
-            <Text style={{marginBottom: 10}}>Explorando as fronteiras entre a realidade e o sobrenatural, este mangá cativa com sua trama envolvente e personagens profundamente fascinantes.</Text>
+            <Text style={{marginBottom: 10, color: '#fff'}}>Explorando as fronteiras entre a realidade e o sobrenatural, este mangá cativa com sua trama envolvente e personagens profundamente fascinantes.</Text>
             <Divider />
             <CardScanProgress />
             <Divider style={{marginBottom: 5}}/>

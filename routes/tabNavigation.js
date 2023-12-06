@@ -4,6 +4,8 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { Icon } from '@rneui/themed';
 
 import FeedStack from './Stacks/feedStack';
+import BuscaStack from './Stacks/buscaStack';
+
 import { defaultColors } from '../utils';
 import { View } from 'react-native';
 // const Tab = createBottomTabNavigator()
@@ -44,8 +46,63 @@ const TabNavigation = ({ navigation }) =>{
             tabBarBadge: false,
             tabBarIcon: ({focused, color}) => ( 
                 <Icon 
-                  name="globe" 
-                  type="entypo" 
+                  name="home" 
+                  type="antdesign" 
+                  size={24}  
+                  color={color}
+                />
+            )
+          }}  
+        />
+        <Tab.Screen 
+          name="BuscaTab"  
+          component={ BuscaStack }   
+          options={{ 
+            headerTitleStyle: { opacity: 0 }, 
+            headerShown: false, 
+            headerTransparent: true,
+            tabBarLabel: 'Início',
+            tabBarBadge: false,
+            tabBarIcon: ({focused, color}) => ( 
+                <Icon 
+                  name="search" 
+                  size={24}  
+                  color={color}
+                />
+            )
+          }}  
+        />
+        <Tab.Screen 
+          name="EstanteTab"  
+          component={ BuscaStack }   
+          options={{ 
+            headerTitleStyle: { opacity: 0 }, 
+            headerShown: false, 
+            headerTransparent: true,
+            tabBarLabel: 'Início',
+            tabBarBadge: false,
+            tabBarIcon: ({focused, color}) => ( 
+                <Icon 
+                  name="profile"
+                  type='antdesign' 
+                  size={24}  
+                  color={color}
+                />
+            )
+          }}  
+        />
+        <Tab.Screen 
+          name="PerfilTab"  
+          component={ BuscaStack }   
+          options={{ 
+            headerTitleStyle: { opacity: 0 }, 
+            headerShown: false, 
+            headerTransparent: true,
+            tabBarLabel: 'Início',
+            tabBarBadge: false,
+            tabBarIcon: ({focused, color}) => ( 
+                <Icon 
+                  name="person" 
                   size={24}  
                   color={color}
                 />

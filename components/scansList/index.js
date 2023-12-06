@@ -4,21 +4,22 @@ import LinearGradient from 'react-native-linear-gradient';
 import { defaultColors } from "../../utils";
 import { Icon } from "@rneui/base";
 import { useNavigation } from "@react-navigation/native";
-import Post from "../post";
+import ScanCard from "../scanCard";
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-export default function PostList({ data }){
+export default function ScansList({ data }){
     const navigation = useNavigation()
 
 
     return (
         <FlatList
             data={data}
-            renderItem={({item}) => <Post/>}
+            renderItem={({item}) => <ScanCard data={item}/>}
             keyExtractor={item => item.id}
-            style={{marginVertical: 15}}
+            style={{height: '100%'}}
+            numColumns={3}
             showsVerticalScrollIndicator={false}
         />
     );

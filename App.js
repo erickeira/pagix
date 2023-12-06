@@ -74,11 +74,14 @@ const codePushOptions = {
 
 export default App;
 // export default codePush(codePushOptions)(App);
+
 const theme = {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
+      text: '#fff',
       background: defaultColors.primary,
       secondaryContainer: defaultColors.secundary,
     },
 };
+console.log(theme)

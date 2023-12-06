@@ -18,13 +18,7 @@ export default function Navegar(){
                 <DefaultButton active={postsFilter == 'seguindo'} titulo={'Seguindo'} onPress={() => setPostsFilter('seguindo')}/>
                 <DefaultButton active={postsFilter == 'amigos'} titulo={'Amigos'} onPress={() => setPostsFilter('amigos')}/>
             </View>
-            <FlatList
-                data={posts}
-                renderItem={({item}) => <Post/>}
-                keyExtractor={item => item.id}
-                style={{marginVertical: 15}}
-                showsVerticalScrollIndicator={false}
-            />
+            <PostList data={posts}/>
         </View>
     );
 }

@@ -4,14 +4,14 @@ import LinearGradient from 'react-native-linear-gradient';
 import { defaultColors } from "../../utils";
 import { Icon } from "@rneui/base";
 import { useNavigation } from "@react-navigation/native";
-import { ProgressBar } from 'react-native-paper';
+import ProgressBar from "../progressBar";
+
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 export default function CardScanProgress({ titulo }){
     const navigation = useNavigation()
-
 
     return (
         <TouchableOpacity style={styles.container}>
@@ -20,13 +20,16 @@ export default function CardScanProgress({ titulo }){
                 style={{width: 80, height: 110, objectFit: 'contain', borderRadius: 4}} 
             />
             <View  style={styles.containerDesc}>
-                <Text>The Novel's Extra</Text>
-                <Text style={{fontSize: 10}}>Ação, Aventura, Romance, Shounen, Vida Escola</Text>
-                <ProgressBar progress={0.5} color={'#4784E0'} style={{marginBottom:10,marginTop: 15, width: windowWidth * 0.6}}/>
-                <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: windowWidth * 0.6 }}>
-                    <Text style={{fontSize: 12}}>40%</Text>
-                    <Text style={{fontSize: 12}}>35/86</Text>
+                <Text style={{color: '#fff'}}>The Novel's Extra</Text>
+                <Text style={{fontSize: 10, color: '#fff'}}>Ação, Aventura, Romance, Shounen, Vida Escola</Text>
+                <ProgressBar progress={'50%'} color={'#4784E0'}/>
+                <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <Text style={{fontSize: 12, color: '#fff'}}>40%</Text>
+                    <Text style={{fontSize: 12, color: '#fff'}}>35/86</Text>
                 </View>
+            </View>
+            <View style={styles.containerIcon}>
+                <Icon name="right" type="antdesign" color="#fff" size={15}/>
             </View>
         </TouchableOpacity>
     );
@@ -42,6 +45,14 @@ const styles = StyleSheet.create({
     },
     containerDesc: {
         flex: 1, 
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
+    },
+    containerIcon:{
+        // flex: 1
+        width: 45,
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
     }
-  });
+});

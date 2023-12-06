@@ -12,7 +12,6 @@ import { useRoute } from '@react-navigation/native';
 import DrawerContent from './drawer';
 
 import TabNavigation from './tabNavigation';
-import Scan from '../pages/scan'
 
 import { defaultColors, defaultStyles } from '../utils';
 
@@ -46,7 +45,7 @@ export default function MyDrawer() {
 const GlobalStack = () => (
     <Stack.Navigator screenOptions={{tabBarActiveTintColor: 'blue',labelStyle: {fontSize: 12}}} >
       <Stack.Screen name="Bottom" component={TabNavigation} options={{  headerShown: false }}/>
-      <Stack.Screen 
+      {/* <Stack.Screen 
         name="Scan" 
         component={Scan} 
         options={{  
@@ -54,6 +53,6 @@ const GlobalStack = () => (
           headerTransparent: true,
           // headerShown: false 
         }}
-      />
+      /> */}
     </Stack.Navigator>
 )

@@ -26,7 +26,7 @@ export default function DefaultButton({ titulo, onPress, active }){
 
     return (
         <TouchableOpacity style={styles.container} onPress={onPress}>
-            <Text>{titulo}</Text>
+            <Text style={{color: '#fff'}}>{titulo}</Text>
         </TouchableOpacity>
     );
 }
