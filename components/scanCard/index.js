@@ -21,10 +21,14 @@ export default function ScanCard({ data }){
             </TouchableOpacity>
         )
     }
-    console.log(data)
+
+    const handleNavigation = () => {
+        navigation.navigate("Scan")
+    }
+
     return (
         <View>
-            <TouchableOpacity style={styles.container}>
+            <TouchableOpacity onPress={handleNavigation} style={styles.container}>
                 <Image 
                     source={{uri: 'https://cover.nexoscans.net/wp-content/uploads/2023/11/resource.jpg'}}
                     style={{width: larguraImagem, height: alturaImagem, objectFit: 'contain', borderRadius: 5}} 

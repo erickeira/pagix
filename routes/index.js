@@ -14,12 +14,14 @@ import DrawerContent from './drawer';
 import TabNavigation from './tabNavigation';
 
 import { defaultColors, defaultStyles } from '../utils';
+import Scan from '../pages/scan';
+import BackButton from '../components/backButton';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
 export default function MyDrawer() {
-  
+    
     return (
         <Drawer.Navigator
           drawerContent={
@@ -45,14 +47,19 @@ export default function MyDrawer() {
 const GlobalStack = () => (
     <Stack.Navigator screenOptions={{tabBarActiveTintColor: 'blue',labelStyle: {fontSize: 12}}} >
       <Stack.Screen name="Bottom" component={TabNavigation} options={{  headerShown: false }}/>
-      {/* <Stack.Screen 
+      <Stack.Screen 
         name="Scan" 
         component={Scan} 
         options={{  
           headerShown: true,
           headerTransparent: true,
+          headerLeft: () => {
+            return(
+              <BackButton/>
+            )
+          }
           // headerShown: false 
         }}
-      /> */}
+      />
     </Stack.Navigator>
 )

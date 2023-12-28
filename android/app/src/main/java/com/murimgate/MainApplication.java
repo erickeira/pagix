@@ -1,4 +1,4 @@
-package com.murimgate;
+package com.pagix;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

@@ -74,9 +74,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.murimgate"
+    namespace "com.pagix"
     defaultConfig {
-        applicationId "com.murimgate"
+        applicationId "com.pagix"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
