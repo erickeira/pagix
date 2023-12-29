@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { StatusBar, Platform,Modal, SafeAreaView,View, Image, Dimensions,Text, TextInput,Linking } from 'react-native';
 import MyDrawer from './routes/index'
 import {  NavigationContainer, DefaultTheme  } from '@react-navigation/native';
@@ -6,7 +6,8 @@ import NetInfo from "@react-native-community/netinfo";
 import { PaperProvider } from 'react-native-paper';
 import codePush from "react-native-code-push";
 import { defaultColors, defaultStyles } from './utils';
-import AuthProvider from './context'
+import AuthProvider, { AuthContext } from './context'
+import Login from './pages/login';
 
 const height = Dimensions.get('screen').height;
 
@@ -25,6 +26,7 @@ export const navigationRef = React.createRef();
 function App() {
 
     const [ connectionOff, setConnectionOff ] = useState(false);
+    const { session  } = useContext(AuthContext)
    
 	useEffect(() => {
         if(Platform.OS == 'android') StatusBar.setBackgroundColor(defaultColors.primary, true);
@@ -44,24 +46,24 @@ function App() {
 
     return (
         <AuthProvider>
-            <NavigationContainer 
-                ref={navigationRef}
-                theme={theme}
-            >
-                <Modal 
-                    animationType="none" 
-                    transparent={true}
-                    visible={ connectionOff }
-                    presentationStyle="overFullScreen"
+                <NavigationContainer 
+                    ref={navigationRef}
+                    theme={theme}
                 >
-                <View style={{ flex: 1, backgroundColor: 'grey', alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={[ { fontSize: 26, textAlign: 'center', marginBottom: 10 } ]}>Oops...</Text>
-                    <Text style={{ fontSize: 14, lineHeight: 20, textAlign: 'center', paddingHorizontal: 40, marginBottom: 30 }}>Você está off-line.{"\n"}Verifique a sua conexão.</Text>					
-                </View>
+                    <Modal 
+                        animationType="none" 
+                        transparent={true}
+                        visible={ connectionOff }
+                        presentationStyle="overFullScreen"
+                    >
+                    <View style={{ flex: 1, backgroundColor: 'grey', alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={[ { fontSize: 26, textAlign: 'center', marginBottom: 10 } ]}>Oops...</Text>
+                        <Text style={{ fontSize: 14, lineHeight: 20, textAlign: 'center', paddingHorizontal: 40, marginBottom: 30 }}>Você está off-line.{"\n"}Verifique a sua conexão.</Text>					
+                    </View>
 
-                </Modal>
-                    <MyDrawer/>
-            </NavigationContainer>
+                    </Modal>
+                        <MyDrawer/>
+                </NavigationContainer>
         </AuthProvider>
     )
     

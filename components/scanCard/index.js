@@ -16,8 +16,13 @@ export default function ScanCard({ data }){
 
     const ButtonAdd = ({added}) => {
         return(
-            <TouchableOpacity style={{...styles.containerButton,...{ backgroundColor: added ? defaultColors.activeColor : '#666'}}}>
-                <Icon name={added ? 'check': 'add'} color={'#fff'}/>
+            <TouchableOpacity style={{...styles.containerButton}}>
+                <Icon 
+                    name={added ? "bookmark" : "bookmark-outline"} 
+                    type="ionicons" 
+                    size={20}
+                    color={added ? "#FAFF00" : "white"}
+                />
             </TouchableOpacity>
         )
     }
@@ -55,6 +60,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         position: 'absolute',
         bottom: 40,
-        right: 10
+        right: 10,
+        backgroundColor:  'rgba( 1, 1,1,0.6)'
     }
 });

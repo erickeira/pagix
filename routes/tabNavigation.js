@@ -5,6 +5,7 @@ import { Icon } from '@rneui/themed';
 
 import FeedStack from './Stacks/feedStack';
 import BuscaStack from './Stacks/buscaStack';
+import LeiturasStack from './Stacks/leiturasStack';
 
 import { defaultColors } from '../utils';
 import { View } from 'react-native';
@@ -35,7 +36,7 @@ const TabNavigation = ({ navigation }) =>{
         labeled={false}
         // shifting={true}
       >
-        <Tab.Screen 
+        {/* <Tab.Screen 
           name="FeedTab"  
           component={ FeedStack }   
           options={{ 
@@ -53,7 +54,7 @@ const TabNavigation = ({ navigation }) =>{
                 />
             )
           }}  
-        />
+        /> */}
         <Tab.Screen 
           name="BuscaTab"  
           component={ BuscaStack }   
@@ -73,8 +74,8 @@ const TabNavigation = ({ navigation }) =>{
           }}  
         />
         <Tab.Screen 
-          name="EstanteTab"  
-          component={ BuscaStack }   
+          name="LeiturasTab"  
+          component={ LeiturasStack }   
           options={{ 
             headerTitleStyle: { opacity: 0 }, 
             headerShown: false, 
@@ -91,7 +92,7 @@ const TabNavigation = ({ navigation }) =>{
             )
           }}  
         />
-        <Tab.Screen 
+        {/* <Tab.Screen 
           name="PerfilTab"  
           component={ BuscaStack }   
           options={{ 
@@ -108,7 +109,7 @@ const TabNavigation = ({ navigation }) =>{
                 />
             )
           }}  
-        />
+        /> */}
       </Tab.Navigator>  
     )
   } 

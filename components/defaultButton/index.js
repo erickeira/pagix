@@ -13,12 +13,13 @@ export default function DefaultButton({ titulo, onPress, active }){
 
     const styles = StyleSheet.create({ 
         container: {
-            flex: 1,
-            paddingVertical: 8,
+            width: '100%',
+            paddingVertical: 14,
             paddingHorizontal: 15,
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
+            marginBottom: 15,
             backgroundColor: active ? defaultColors.activeColor : defaultColors.secundary,
             borderRadius: 4
         },

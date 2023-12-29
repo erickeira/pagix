@@ -15,13 +15,16 @@ import TabNavigation from './tabNavigation';
 
 import { defaultColors, defaultStyles } from '../utils';
 import Scan from '../pages/scan';
+import Login from '../pages/login';
 import BackButton from '../components/backButton';
+import HeaderSaveButton from '../components/headerSaveButton';
+import { AuthContext } from '../context';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
 export default function MyDrawer() {
-    
+    const { session } = useContext(AuthContext)
     return (
         <Drawer.Navigator
           drawerContent={
@@ -33,14 +36,28 @@ export default function MyDrawer() {
             },
           }}
         >   
-            <Drawer.Screen 
-              name="Global" 
-              component={GlobalStack} 
-              options={{  
-                headerShown: false,
-                drawerItemStyle: { display: 'none' } 
-              }}
-            />
+        {
+          session ?
+          <Drawer.Screen 
+            name="Global" 
+            component={GlobalStack} 
+            options={{  
+              headerShown: false,
+              drawerItemStyle: { display: 'none' } 
+            }}
+          />
+          :
+          <Drawer.Screen 
+            name="Login" 
+            component={Login} 
+            options={{  
+              headerShown: false,
+              drawerItemStyle: { display: 'none' } 
+            }}
+          />
+        }
+            
+            
         </Drawer.Navigator>
     );
 }
@@ -53,9 +70,15 @@ const GlobalStack = () => (
         options={{  
           headerShown: true,
           headerTransparent: true,
+          headerTitle: '',
           headerLeft: () => {
             return(
               <BackButton/>
+            )
+          },
+          headerRight: () => {
+            return(
+              <HeaderSaveButton/>
             )
           }
           // headerShown: false 

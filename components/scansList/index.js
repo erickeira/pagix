@@ -4,23 +4,24 @@ import LinearGradient from 'react-native-linear-gradient';
 import { defaultColors } from "../../utils";
 import { Icon } from "@rneui/base";
 import { useNavigation } from "@react-navigation/native";
-import ScanCard from "../scanCard";
+import CardScanProgress from "../cadScanProgress";
+import { RefreshControl } from "react-native-gesture-handler";
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-export default function ScansList({ data }){
+export default function ScansList({ data, grid, ListHeaderComponent, onRefresh,loading }){
     const navigation = useNavigation()
-
-
     return (
         <FlatList
             data={data}
-            renderItem={({item}) => <ScanCard data={item}/>}
+            refreshControl={ <RefreshControl refreshing={loading} onRefresh={onRefresh} tintColor={ '#fff' } /> } 
+            renderItem={({item}) => <CardScanProgress grid={grid} data={item}/>}
             keyExtractor={item => item.id}
             style={{height: '100%'}}
-            numColumns={3}
+            numColumns={grid ? 3 : 1}
             showsVerticalScrollIndicator={false}
+            ListHeaderComponent={ListHeaderComponent || <></>}
         />
     );
 }

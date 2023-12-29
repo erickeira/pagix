@@ -5,7 +5,7 @@ import { NavigationContainerRefContext, useIsFocused, useNavigationState, useRou
 import { Avatar } from '@rneui/themed';
 import Logo from '../../assets/images/pagix_logo.png'
 
-import Busca from '../../pages/busca'; 
+import Leituras from '../../pages/leituras'; 
 
 const Stack = createStackNavigator();
 
@@ -17,7 +17,7 @@ import { color } from '@rneui/base';
 
 
 
-const BuscaStack = ({ navigation }) => {
+const LeiturasStack = ({ navigation }) => {
   const currentRouteName = navigationRef?.current?.getCurrentRoute().name;
   const route = useRoute()
   const fullScreens = ["Busca"]
@@ -28,13 +28,15 @@ const BuscaStack = ({ navigation }) => {
   },[ route ])
   
   return ( 
-    <Stack.Navigator >
+  <Stack.Navigator >
       <Stack.Screen 
-        name="Feed" 
-        component={Busca} 
+        name="Leituras" 
+        component={Leituras} 
         options={{
           headerShown: false, 
-          // headerTransparent: true
+        //   headerTransparent: true,
+        //   headerStyle: defaultStyles.defaultHeaderStyles,
+        //   headerTintColor: '#fff',
         }}
       />
      
@@ -43,4 +45,4 @@ const BuscaStack = ({ navigation }) => {
 }
 
 
-export default BuscaStack;
+export default LeiturasStack;

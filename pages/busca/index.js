@@ -2,17 +2,29 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { ScrollView, Text, View,StyleSheet, SafeAreaView, Animated } from "react-native";
 import ScansList from '../../components/scansList';
 import { SearchBar } from '@rneui/themed';
-import { defaultColors } from '../../utils';
+import { defaultColors, supabase } from '../../utils';
 
 export default function Busca(){
-    const [ scansFilter, setScansFilter] = useState("feed")
     const [search, setSearch] = useState("");
+    const [loading, setLoading] = useState(false)
 
     const updateSearch = (search) => {
-    setSearch(search);
+        setSearch(search);
     };
 
-    const [scans, setScans] = useState([{id: 1},{id: 2},{id: 3},{id: 4},{id: 5}])
+    const [scans, setScans] = useState([])
+
+    const handleGetScans = async () => {
+        let { data: scans, error } = await supabase.from('scans').select('*')
+        console.log(scans)
+        if(!error){
+            setScans(scans)
+        }
+    }
+
+    useEffect(() => {
+        handleGetScans()
+    },[])
 
     return (
         <SafeAreaView style={styles.container}>
@@ -22,7 +34,12 @@ export default function Busca(){
                 value={search}
                 containerStyle={{backgroundColor: defaultColors.primary, borderWidth: 0, marginBottom: 10}}
             />
-            <ScansList data={scans}/>
+            <ScansList 
+                data={scans} 
+                grid
+                loading={loading}
+                onRefresh={handleGetScans}
+            />
         </SafeAreaView>
     );
 }

@@ -8,11 +8,11 @@ import { useNavigation } from "@react-navigation/native";
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-export default function ProgressBar({ progress, style, color}){
+export default function ProgressBar({ progress, style, color, width}){
     const navigation = useNavigation()
     const styles = StyleSheet.create({ 
         container: {
-            width: '100%',
+            width: width || '100%',
             backgroundColor: '#adadad',
             height: 3,
             borderRadius: 5,
