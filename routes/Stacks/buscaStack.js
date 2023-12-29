@@ -27,6 +27,7 @@ const BuscaStack = ({ navigation }) => {
     })
   },[ route ])
   
+  
   return ( 
     <Stack.Navigator >
       <Stack.Screen 
