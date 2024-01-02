@@ -6,6 +6,7 @@ import { Icon } from "@rneui/base";
 import { useNavigation } from "@react-navigation/native";
 import ProgressBar from "../progressBar";
 import { supabase } from "../../utils";
+import { lutimes } from "fs";
 
 
 const windowWidth = Dimensions.get('window').width;
@@ -16,12 +17,17 @@ export default function CardScanProgress({ data, grid, saved }){
         scan_id,
         scan_nome,
         scan_tags,
-        scan_image
+        scan_image,
+        scan_capitulos,
+        leitura
     } = data
     const navigation = useNavigation()
     const [isSaved, setIsSaved ] = useState(saved)
     const [tags, setTags] = useState([])
-
+    const lidos = leitura ? leitura[0]?.lei_lidos : null
+    const quantidadeLida = lidos?.split(',')?.length
+    const porcentagemLida = quantidadeLida ? Math.round((quantidadeLida * 100 )/ scan_capitulos) : 0
+    
     const larguraImagem = windowWidth * 0.33;
     const alturaImagem = larguraImagem * 1.3
     const styles = StyleSheet.create({ 
@@ -101,7 +107,7 @@ export default function CardScanProgress({ data, grid, saved }){
                 />
                 <View  style={styles.containerDescGrid}>
                     <Text style={{color: '#fff'}}>{scan_nome}</Text>
-                    { saved ? <ProgressBar progress={'50%'}  color={'#4784E0'}/> : null }
+                    { saved ? <ProgressBar progress={`${porcentagemLida}%`}  color={'#4784E0'}/> : null }
                 </View>
                 <ButtonAdd saved={isSaved}/>
             </TouchableOpacity>
@@ -119,8 +125,8 @@ export default function CardScanProgress({ data, grid, saved }){
                 <Text style={{fontSize: 10, color: '#fff', marginTop: 20}}>Lendo</Text>
                 <ProgressBar progress={'50%'} color={'#4784E0'}/>
                 <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <Text style={{fontSize: 12, color: '#fff'}}>40%</Text>
-                    <Text style={{fontSize: 12, color: '#fff'}}>35/86</Text>
+                    <Text style={{fontSize: 12, color: '#fff'}}>{porcentagemLida}%</Text>
+                    <Text style={{fontSize: 12, color: '#fff'}}>{quantidadeLida || 0}/{scan_capitulos}</Text>
                 </View>
             </View>
             <ButtonAdd saved={isSaved} />

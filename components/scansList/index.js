@@ -17,7 +17,7 @@ export default function ScansList({ data, grid, ListHeaderComponent, onRefresh,l
             data={data}
             refreshControl={ <RefreshControl refreshing={loading} onRefresh={onRefresh} tintColor={ '#fff' } /> } 
             renderItem={({item}) => <CardScanProgress grid={grid} data={item}/>}
-            keyExtractor={item => item.id}
+            keyExtractor={item => item.scan_id}
             style={{height: '100%'}}
             numColumns={grid ? 3 : 1}
             showsVerticalScrollIndicator={false}

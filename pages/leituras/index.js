@@ -9,11 +9,14 @@ export default function Leituras(){
     const [loading, setLoading] = useState(false)
 
     const handleGetScans = async () => {
-        let { data: scans, error } = await supabase.from('scans').select('*')
+        let { data: scans, error } = await supabase
+            .from('scans')
+            .select('*, leitura (lei_lidos)')
         if(!error){
             setScans(scans)
         }
     }
+    console.log(scans)
 
     useEffect(() => {
         handleGetScans()
@@ -40,7 +43,7 @@ export default function Leituras(){
                                 fontSize: 17,
                             }}
                         >
-                            Minhas leituras
+                            Minhas leituras ({scans.length})
                         </Text>
                     </View>
                 }

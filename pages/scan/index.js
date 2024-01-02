@@ -36,7 +36,6 @@ export default function Scan({ route }){
         let auxLidos = lidos
         if(lido) auxLidos = auxLidos.filter(capLido => capLido != cap)
         else auxLidos.push(cap)
-        console.log(auxLidos)
         setLidos(auxLidos)
     }
     const handleAll = () => {
